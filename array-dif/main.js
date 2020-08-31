@@ -12,22 +12,7 @@ let arr3 = ['2', '1', '1', '2', '2', '2', '3', '2'];
 let arr4 = ['1', '2'];
 
 function arrayDiff(a, b) {
-    let cleanedArray = [];
-
-    function isInArrayB(elA, arrB) {
-        return arrB.includes(elA);
-    }
-
-    function filterArrA(inputArray) {
-        inputArray.forEach(elementA => {
-            if (isInArrayB(elementA, b) === false) {
-                cleanedArray.push(elementA);
-            }
-        });
-        return cleanedArray;
-    }
-
-    return filterArrA(a);
+    return a.filter(e => !b.includes(e));
 }
 
 console.log(arrayDiff(arr3, arr4));
