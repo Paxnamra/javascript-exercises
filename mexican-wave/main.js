@@ -17,13 +17,12 @@ Test.assertDeepEquals(wave(" gap "), result, "Should return: '"+result+"'");
 
 function wave(str) {
     let resultArray = [];
-    let strArr = str.split('');
 
     for (let i = 0; i < str.length; i++) {
-        if (str[i].match(/[a-z]/g)) {
+        if (str[i] !== ' ') {
+            let strArr = str.split('');
             strArr[i] = str.charAt(i).toUpperCase();
             resultArray.push(strArr.join(''));
-            strArr[i] = str.charAt(i).toLowerCase();
         }
     }
 
