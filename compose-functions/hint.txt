@@ -1,0 +1,7 @@
+/*
+   const sum = (init = 0, ...values) => values.reduce((acc, value) => acc + value, init);
+
+   console.log(sum());
+   console.log(sum(3));
+   console.log(sum(1, 2, 3, 4));
+*/
