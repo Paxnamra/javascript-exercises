@@ -12,15 +12,13 @@ Test.assertEquals(generateHashtag("a".repeat(140)), false, "Too long")
 */
 
 function generateHashtag(str) {
-    let h = str.split('').filter(a => a !== " ");
+    str = str.trim();
 
-    let arrayed = (h.length === 0 || h.length > 139) ? false : str.split(" ");
-    let uppercased = ["#"];
+    const result = `#${str.split(/\s+/g)
+                          .map(word => word.charAt(0).toUpperCase() + word.slice(1, word.length))
+                          .join('')}`
 
-    for (let i = 0; i < arrayed.length; i++) {
-        let temp = arrayed[i].charAt(0).toUpperCase() + arrayed[i].slice(1).toLowerCase();
-        uppercased.push(temp);
-    }
-
-    return uppercased.length <= 1 ? false : uppercased.join('');
+    return !str.length ? false
+        : result.length > 140 ? false
+        : result;
 }
