@@ -12,29 +12,15 @@ Test.assertEquals(generateHashtag("a".repeat(140)), false, "Too long")
 */
 
 function generateHashtag(str) {
-    let sample = noSpacesLength(str);
+    let h = str.split('').filter(a => a !== " ");
 
-    let arrayed = (sample.length === 0 || sample.length > 140) ? false : str.split(" ");
+    let arrayed = (h.length === 0 || h.length > 139) ? false : str.split(" ");
+    let uppercased = ["#"];
 
     for (let i = 0; i < arrayed.length; i++) {
         let temp = arrayed[i].charAt(0).toUpperCase() + arrayed[i].slice(1).toLowerCase();
+        uppercased.push(temp);
     }
 
-
-    return arrayed;
+    return uppercased.length <= 1 ? false : uppercased.join('');
 }
-
-
-function noSpacesLength(str) {
-    const pattern = /\S/g
-    return [...str.matchAll(pattern)];
-}
-
-console.log(generateHashtag(""));
-console.log(generateHashtag(" ".repeat(200)));
-console.log(generateHashtag(" ".repeat(5) + "abcd"));
-console.log(generateHashtag("Codewars Is Nice"));
-
-console.log(generateHashtag("trololololo ooo oool ll"))
-console.log(generateHashtag("Looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong Cat"));
-console.log(generateHashtag("a".repeat(140)));
